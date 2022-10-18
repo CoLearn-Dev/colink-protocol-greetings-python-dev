@@ -1,0 +1,21 @@
+[package]
+name = "greetings"
+version = "0.1.1"
+keywords = ["greetings"]
+description = "greetings"
+install_script = """
+if { conda env list | grep 'colink-protocol-greetings'; } >/dev/null 2>&1; then
+    conda env remove -n colink-protocol-greetings
+fi
+conda create -n colink-protocol-greetings python=3.9 -y
+conda activate colink-protocol-greetings
+pip install colink
+"""
+entrypoint = """
+conda activate colink-protocol-greetings
+python main.py
+"""
+
+[greetings]
+name = "greetings"
+description = "greetings"
